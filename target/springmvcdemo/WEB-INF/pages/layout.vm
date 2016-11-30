@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Westolife-$!{pageTitle}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/src/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="/src/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/src/css/grayscale.min.css" rel="stylesheet">
+
+    #foreach($href in $pageCssLinks)
+        <link rel="stylesheet" type="text/css" href="${href}?_t=${timestamp}">
+    #end
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    #parse("header.vm")
+
+    $screen_content
+
+<!-- Footer -->
+<footer>
+    <div class="container text-center">
+        <p>Copyright &copy; westolife.com 2016</p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/src/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/src/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/src/js/vue.js"></script>
+<script type="text/javascript" src='/src/js/vue-resource.js'></script>
+
+#foreach($src in $pageJsLinks)
+    <script type="text/javascript" src="${src}?_t=${timestamp}"></script>
+#end
+
+</body>
+
+</html>

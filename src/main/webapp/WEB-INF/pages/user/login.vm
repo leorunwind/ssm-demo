@@ -1,0 +1,49 @@
+#set( $layout = "layout.vm" )
+#set( $pageTitle = "登录" )
+
+#set($pageCssLinks =[])
+#set($pageJsLinks =[])
+
+<!-- Intro Header -->
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">账号</label>
+                        <div class="col-sm-4">
+                            <input type="text" v-model="username" class="form-control" placeholder="输入用户名或邮箱">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-4">
+                            <input type="password" v-model="password" @keyup.enter="submit"
+                                   class="form-control" placeholder="输入本站点密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-2">
+                            <div class="checkbox" style="position: absolute;left: 15px">
+                                <label>
+                                    <input type="checkbox">保存密码
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px">
+                        <div class="col-sm-offset-2 col-sm-2">
+                            <button @click="submit" class="btn btn-default" style="position: absolute;left: 15px">登录</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-offset-2 col-sm-2" style="position: absolute;left: 80px;">
+                    <a href="/signup">我要注册>>></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+#set($success=$pageJsLinks.add("/src/js/user/login.js"))

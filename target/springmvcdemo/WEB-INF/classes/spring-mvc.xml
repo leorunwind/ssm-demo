@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <context:component-scan base-package="com.westolife" />
+
+    <mvc:annotation-driven />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean id="loginInterceptor" class="com.westolife.web.interceptor.LoginInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--静态资源的访问不拦截-->
+    <mvc:resources mapping="/src/css/**" location="/WEB-INF/src/css/" />
+    <mvc:resources mapping="/src/js/**" location="/WEB-INF/src/js/" />
+    <mvc:resources mapping="/src/img/**" location="/WEB-INF/src/img/" />
+    <mvc:resources mapping="/src/less/**" location="/WEB-INF/src/less/" />
+    <mvc:resources mapping="/src/sass/**" location="/WEB-INF/src/sass/" />
+    <mvc:resources mapping="/src/vendor/**" location="/WEB-INF/src/vendor/" />
+    <mvc:resources mapping="/ueditor/**" location="/ueditor/" />
+
+    <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="com.westolife.web.exception.AuthorizeException">redirect:/login</prop>
+                <prop key="com.westolife.web.exception.InnerException">redirect:/error</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--默认JSP视图解析-->
+    <!--<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
+        <!--<property name="prefix" value="/WEB-INF/pages/" />-->
+        <!--<property name="suffix" value=".jsp" />-->
+    <!--</bean>-->
+    <bean id="velocityConfigurer"
+          class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/pages/" /><!-- 模板存放的路径 -->
+        <property name="velocityProperties">
+            <props>
+                <prop key="directive.foreach.counter.name">loopCounter</prop>
+                <prop key="directive.foreach.counter.initial.value">0</prop>
+                <prop key="input.encoding">UTF-8</prop><!-- 指定模板引擎进行模板处理的编码 -->
+                <prop key="output.encoding">UTF-8</prop><!-- 指定输出流的编码 -->
+            </props>
+        </property>
+    </bean>
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+        <property name="suffix" value=".vm" /><!-- 视图文件的后缀名 -->
+        <property name="cache" value="true" />
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="dateToolAttribute" value="dateTool" />
+        <property name="numberToolAttribute" value="numberTool" />
+        <property name="requestContextAttribute" value="rc"/>
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+    </bean>
+
+    <!-- 引入jdbc、log4j等配置文件 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:properties/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- rest json related... start -->
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <!-- rest json related... end -->
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!-- 使用properties来配置 -->
+        <property name="driverClassName">
+            <value>${jdbc_driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${jdbc_url}</value>
+        </property>
+        <property name="username">
+            <value>${jdbc_username}</value>
+        </property>
+        <property name="password">
+            <value>${jdbc_password}</value>
+        </property>
+    </bean>
+
+    <!-- 自动扫描了所有的XxxxMapper.xml对应的mapper接口文件，这样就不用一个一个手动配置Mpper的映射了，只要Mapper接口类和Mapper映射文件对应起来就可以了-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.westolife.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!-- 配置Mybatis的文件 ，mapperLocations配置**Mapper.xml文件位置，configLocation配置mybatis-config文件位置-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+    </bean>
+
+    <!--事务管理-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>

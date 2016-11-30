@@ -1,0 +1,92 @@
+#set( $layout = "layout.vm" )
+#set( $pageTitle = "个人中心" )
+
+#set($pageCssLinks =[])
+#set($pageJsLinks =[])
+
+<!-- Intro Header -->
+<input type="hidden" id="velocity-username" value="${userInfo.name}">
+<input type="hidden" id="velocity-mail" value="${userInfo.mail}">
+
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-4">
+                            <input type="text" v-model="username" class="form-control" placeholder="{{username}}">
+                        </div>
+                        <font color="#ff4500" style="position: absolute;left: 700px;">{{tips.username}}</font>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">邮箱</label>
+                        <div class="col-sm-4">
+                            <input type="text" v-model="mail" class="form-control" placeholder="{{mail}}">
+                        </div>
+                        <font color="#ff4500" style="position: absolute;left: 700px;">{{tips.mail}}</font>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-4">
+                            <input type="password" v-model="password" class="form-control" placeholder="输入新密码,不输入则不更改密码">
+                        </div>
+                        <font color="#ff4500" style="position: absolute;left: 700px;">{{tips.password}}</font>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">确认密码</label>
+                        <div class="col-sm-4">
+                            <input type="password" v-model="password1" class="form-control" placeholder="确认新密码">
+                        </div>
+                        <font color="#ff4500" style="position: absolute;left: 700px;">{{tips.password1}}</font>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-2">
+                            <div class="radio">
+                                <label>
+                                    <template v-if="gender==1">
+                                        <input type="radio" v-model="gender" name="optionsRadios" id="optionsRadios1" value="1" checked>
+                                    </template>
+                                    <template v-else>
+                                        <input type="radio" v-model="gender" name="optionsRadios" id="optionsRadios1" value="1">
+                                    </template>
+                                    男
+                                </label>
+                                <label style="margin-left: 10px">
+                                    <template v-if="gender==2">
+                                        <input type="radio" v-model="gender" name="optionsRadios" id="optionsRadios1" value="2" checked>
+                                    </template>
+                                    <template v-else>
+                                        <input type="radio" v-model="gender" name="optionsRadios" id="optionsRadios1" value="2">
+                                    </template>
+                                    女
+                                </label>
+                                <label style="margin-left: 10px">
+                                    <template v-if="gender==0">
+                                        <input type="radio" v-model="gender" name="optionsRadios" id="optionsRadios1" value="0" checked>
+                                    </template>
+                                    <template v-else>
+                                        <input type="radio" v-model="gender" name="optionsRadios" id="optionsRadios1" value="0">
+                                    </template>
+                                    保密
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px">
+                        <div class="col-sm-offset-2 col-sm-2">
+                            <button @click="submit" class="btn btn-default" style="position: absolute;left: 15px">提交修改</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-2" style="position: absolute;left: 150px;">
+                        <font v-if="signupSuccess==true" color="#7fffd4"><a href="/">{{signupTip}}</a></font>
+                        <font v-if="signupSuccess==false" color="#ff4500">{{signupTip}}</font>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+#set($success=$pageJsLinks.add("/src/js/user/myhome.js"))
