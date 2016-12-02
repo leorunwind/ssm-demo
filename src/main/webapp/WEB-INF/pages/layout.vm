@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Westolife-$!{pageTitle}</title>
+    <title>yourwebsite-$!{pageTitle}</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/src/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/src/css/grayscale.min.css" rel="stylesheet">
 
     #foreach($href in $pageCssLinks)
-        <link rel="stylesheet" type="text/css" href="${href}?_t=${timestamp}">
+        <link rel="stylesheet" type="text/css" href="${href}">
     #end
 </head>
 
@@ -32,7 +32,7 @@
 <!-- Footer -->
 <footer>
     <div class="container text-center">
-        <p>Copyright &copy; westolife.com 2016</p>
+        <p>Copyright &copy; yourwebsite 2016</p>
     </div>
 </footer>
 
@@ -42,7 +42,7 @@
 <script type="text/javascript" src='/src/js/vue-resource.js'></script>
 
 #foreach($src in $pageJsLinks)
-    <script type="text/javascript" src="${src}?_t=${timestamp}"></script>
+    <script type="text/javascript" src="${src}"></script>
 #end
 
 </body>

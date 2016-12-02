@@ -10,9 +10,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="brand-heading">Westolife</h1>
-                    <p class="intro-text">if (Westlife == 西城男孩) then Westolife == 西土城男孩;
-                        <br><br>开始看看有什么好玩的.</p>
+                    <h1 class="brand-heading">介绍</h1>
+                    <p class="intro-text">
+                        <br><br>下拉查看更多</p>
                     <a href="#about" class="btn btn-circle page-scroll">
                         <i class="fa fa-angle-double-down animated"></i>
                     </a>
@@ -26,10 +26,9 @@
 <section id="about" class="container content-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h2>About Westolife</h2>
-            <p>Westolife是一个热爱互联网技术的程序猿，他经常会很不要脸地说: “我是一名全栈工程师,不是Java/Python/PHP程序员!”。呃, 他在<a href="http://leorun.cn/blog/" target="_blank">另一个站点</a>也说过一样的话。</p>
-            <p>关于这个网站<a href="#about">Westolife</a> 纯粹是为了体验一下Spring+SpringMVC+Mybatis的技术体系,也就是传说中的<a href="#about">SSM</a>。自己建房子的同时更能明白这个房子的框架。</p>
-            <p>在前端技术上采用了天才少年尤雨溪发明的Vue.js,前端模板套用了bootstrap</p>
+            <h2>关于</h2>
+            <p><a href="#about">这个站点</a>提供一个最小demo，为那些想学习Spring+SpringMVC+Mybatis+Velocity的技术体系的同学提供最方便的体验</p>
+            <p>前端使用Vue.js组件,前端模板套用了bootstrap</p>
         </div>
     </div>
 </section>
@@ -40,8 +39,8 @@
         <div class="container">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>留言</h2>
-                <p>请尽情留言, 话题可以是技术讨论, 可以是关于今年校招, 可以是各种各样的话题</p>
-                <a href="http://leorun.cn/main" target="_blank" class="btn btn-default btn-lg">去往留言页</a>
+                <p>请尽情留言......</p>
+                <a href="#" target="_blank" class="btn btn-default btn-lg">去往你的留言页</a>
             </div>
         </div>
     </div>
@@ -53,7 +52,7 @@
         <div class="col-lg-8 col-lg-offset-2">
             <h2>联系管理员</h2>
             <p>有什么问题,欢迎随时向网站管理员提问</p>
-            <p>westolife@qq.com</p>
+            <p>your email</p>
             <ul class="list-inline banner-social-buttons">
                 <li>
                     <a href="https://github.com/leorunwind" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>

@@ -15,7 +15,7 @@ public class UserServiceTest extends BaseTest {
 
     @Test
     public void getUserByNameTest() {
-        User user = userService.findUserByNameOrMail("w-admin", "luorunwen@westolife.com");
+        User user = userService.findUserByNameOrMail("w-admin", "luo@qq.com");
         if (user != null) {
             System.out.println(user.getId());
         }

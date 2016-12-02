@@ -21,9 +21,9 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
-    private final String ADMIN = "wadmin";
+    private final String ADMIN = "w-admin";
 
-    private final String ADMIN_MAIL = "luorunwen@qq.com";
+    private final String ADMIN_MAIL = "luo@qq.com";
 
     @Autowired
     private UserService userService;

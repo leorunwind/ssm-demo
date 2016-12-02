@@ -25,7 +25,7 @@
   </context-param>
   <context-param>
     <param-name>loggingLevel</param-name>
-    <param-value>INFO</param-value>
+    <param-value>DEBUG</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.westolife.dao.UserDAO">
-    <!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！-->
+    <!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不一致，此处一定要！-->
     <resultMap id="UserMap" type="com.westolife.model.User">
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="username" property="userName" jdbcType="VARCHAR" />

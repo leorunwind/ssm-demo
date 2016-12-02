@@ -28,7 +28,6 @@
     <mvc:resources mapping="/src/less/**" location="/WEB-INF/src/less/" />
     <mvc:resources mapping="/src/sass/**" location="/WEB-INF/src/sass/" />
     <mvc:resources mapping="/src/vendor/**" location="/WEB-INF/src/vendor/" />
-    <mvc:resources mapping="/ueditor/**" location="/ueditor/" />
 
     <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
